@@ -1,0 +1,24 @@
+input[type="number"]::-webkit-inner-spin-button, /* 증감 화살표 */
+input[type="number"]::-webkit-outer-spin-button { /* 외각을 포함한 스피너의 컨테이너 */
+  opacity: 1; /* 항상 보이게 만듦 */
+}
+/* inner와 outer를 함께 써야 함 -- 1. 브라우저 호환성 2.안쪽과 바깥쪽 모두 제어하기 위해*/
+
+
+#result {
+  font-weight: 700;
+}
+
+.inline-text,
+.range {
+    display: inline-block; /* 블록 요소를 인라인처럼 배치 */
+    margin-right: 8px; /* 간격 조절 */
+}
+
+
+.inline-text,
+.mynumber,
+.my_button {
+    display: inline-block; /* 블록 요소를 인라인처럼 배치 */
+    margin-right: 8px; /* 간격 조절 */
+}

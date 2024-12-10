@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Random Number Game</h1>
+    <form>
+      <div>
+        <p class="inline-text">Generate a number between 0 and </p>
+        <input type="number" class='range' min="0">
+      </div>
+      <div>
+        <p class="inline-text"> Guess the number: </p>
+        <input type="number" class='mynumber' min="0">
+        <input type="button" class="my_button" value="Play!">
+      </div>
+    </form>
+    <div>
+      <h5 id="random"></h5>
+      <h5 id="result"></h5>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
