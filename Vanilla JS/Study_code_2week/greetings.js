@@ -155,6 +155,7 @@ function paintGreetings(username) {
 loginForm.addEventListener('submit', onLoginSubmit)
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
+console.log("Saved Username:", savedUsername);
 
 if (savedUsername === null) {
     // show the form
