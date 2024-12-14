@@ -141,6 +141,8 @@ const USERNAME_KEY = "username" // 이 string을 한 번만 작성하고자 변�
 function onLoginSubmit(event) {
     event.preventDefault();
     loginForm.classList.add(HIDDEN_CLASSNAME)
+    console.log("Form hidden status:", loginForm.classList.contains(HIDDEN_CLASSNAME));
+    console.log("Saved username:", savedUsername);
     const username = loginInput.value;
     localStorage.setItem(USERNAME_KEY, username)
     paintGreetings(username)
