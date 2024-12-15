@@ -41,9 +41,51 @@
 
 
 // 7.2 Deleting To Dos
+// const toDoForm = document.getElementById("todo-form");
+// const toDoInput = toDoForm.querySelector("input");
+// const toDoList = document.getElementById("todo-list");
+
+// function deleteToDo(event) {
+//     const li = event.target.parentElement;
+//     li.remove()
+// }
+
+// function paintToDo(newTodo) {
+//     const li = document.createElement("li")
+//     const span = document.createElement("span");
+//     span.innerText = newTodo;
+//     const button = document.createElement("button");
+//     button.innerText = "❌";
+//     button.addEventListener("click", deleteToDo)
+//     li.appendChild(span); 
+//     li.appendChild(button);
+//     // append는 맨 마지막에 둬야 함.
+//     toDoList.appendChild(li);
+// }
+
+// function handleToDoSubmit(event) {
+//     event.preventDefault();
+//     const newTodo = toDoInput.value;
+//     toDoInput.value = "";
+//     paintToDo(newTodo);
+// }
+
+// toDoForm.addEventListener("submit", handleToDoSubmit) 
+
+
+
+// 7.3 Saving To Dos
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
+
+const toDos = [];
+
+function saveToDos(){
+    localStorage.setItem("todos", JSON.stringify(toDos));
+}
+// localStorage에는 텍스트만 저장할 수 있음. 배열을 저장할 수 없음
+// 그러나 배열처럼 보이게 하기 -> JSON.stringify()
 
 function deleteToDo(event) {
     const li = event.target.parentElement;
@@ -59,7 +101,6 @@ function paintToDo(newTodo) {
     button.addEventListener("click", deleteToDo)
     li.appendChild(span); 
     li.appendChild(button);
-    // append는 맨 마지막에 둬야 함.
     toDoList.appendChild(li);
 }
 
@@ -67,7 +108,10 @@ function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
+    toDos.push(newTodo);
     paintToDo(newTodo);
+    saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit) 
+
