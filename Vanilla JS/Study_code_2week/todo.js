@@ -225,6 +225,63 @@
 
 
 // 7.6 Deleting To dos part 1
+// const toDoForm = document.getElementById("todo-form");
+// const toDoInput = toDoForm.querySelector("input");
+// const toDoList = document.getElementById("todo-list");
+
+// const TODOS_KEY = "todos";
+
+// let toDos = [];
+
+// function saveToDos(){
+//     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+// }
+
+// function deleteToDo(event) {
+//     const li = event.target.parentElement;
+//     console.log(li.id);
+//     li.remove()
+// }
+
+// function paintToDo(newTodo) {
+//     const li = document.createElement("li")
+//     li.id = newTodo.id;
+//     const span = document.createElement("span");
+//     span.innerText = newTodo.text; // 아래에서 출력되는 것을 오브젝트로 변경하였으나 여기서 text만 출력으로 재변경
+//     const button = document.createElement("button");
+//     button.innerText = "❌";
+//     button.addEventListener("click", deleteToDo)
+//     li.appendChild(span); 
+//     li.appendChild(button);
+//     toDoList.appendChild(li);
+// }
+
+// function handleToDoSubmit(event) {
+//     event.preventDefault();
+//     const newTodo = toDoInput.value;
+//     toDoInput.value = "";
+//     const newTodoObj = {
+//         text: newTodo,
+//         id: Date.now(),
+//     };
+//     toDos.push(newTodoObj);
+//     paintToDo(newTodoObj);
+//     saveToDos();
+// }
+
+// toDoForm.addEventListener("submit", handleToDoSubmit) 
+
+// const savedToDos = localStorage.getItem(TODOS_KEY);
+
+// if (savedToDos) {
+//     const parsedToDos = JSON.parse(savedToDos);
+//     toDos = parsedToDos
+//     parsedToDos.forEach(paintToDo);
+// }
+
+
+
+// 7.7 Deleting todos part 2 - 3
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
@@ -239,8 +296,11 @@ function saveToDos(){
 
 function deleteToDo(event) {
     const li = event.target.parentElement;
-    console.log(li.id);
     li.remove()
+    // toDos = toDos.filter(toDo => {toDo.id !== li.id}) // 그냥 이렇게 하면 타입 때문에 제대로 작동하지 않음
+    // 실제로 id는 number인데 li.id는 string으로 가져옴
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    saveToDos() // 위에서 toDos를 지운다음 saveToDos를 한번 더 불러와야 함.
 }
 
 function paintToDo(newTodo) {
@@ -278,3 +338,21 @@ if (savedToDos) {
     toDos = parsedToDos
     parsedToDos.forEach(paintToDo);
 }
+
+// 배열에서 삭제하는 것이 아니라 지우고 싶은 요소를 제외하고 배열을 다시 그리는 것
+// .filter
+
+`
+function myfilter() {
+
+}
+
+[1,2,3,4].filter(myfilter)
+
+myfiler(1)
+myfiler(2)
+myfiler(3)
+myfiler(4)
+`
+// 새 배열에 포함시키고 싶다면 myfilter에서 Ture를 반환해야 함.
+
