@@ -45,13 +45,21 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
+function deleteToDo(event) {
+    const li = event.target.parentElement;
+    li.remove()
+}
+
 function paintToDo(newTodo) {
     const li = document.createElement("li")
-    // 변수명은 li라고 지을 필요 없이 원하는 대로 지으면 됨.
-    // 그러나 document.createElement("li") 이 안에 작성되는 태그 이름은 꼭 지켜줘야 함.
     const span = document.createElement("span");
-    li.appendChild(span); // span을 li 안에 넣어주기.
     span.innerText = newTodo;
+    const button = document.createElement("button");
+    button.innerText = "❌";
+    button.addEventListener("click", deleteToDo)
+    li.appendChild(span); 
+    li.appendChild(button);
+    // append는 맨 마지막에 둬야 함.
     toDoList.appendChild(li);
 }
 
